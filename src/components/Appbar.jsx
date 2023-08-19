@@ -21,6 +21,7 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
 import { useNavigate } from 'react-router-dom';
+import { CardMedia } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -123,9 +124,11 @@ export default function MiniDrawer({handleLogout, user}) {
                     <Typography variant="h6" noWrap component="div">
                         Amberpass
                     </Typography>
-                    <Typography variant='h6'>
+                    <Typography className='flex items-center' variant='h6'>
                         Welcome, {user.name}
+                        <CardMedia className="h-10 w-10 mx-4 rounded-full" image={user.image ? user.image : "https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg"}/>
                     </Typography>
+                   
                     </div>
                 </Toolbar>
                 
@@ -159,7 +162,7 @@ export default function MiniDrawer({handleLogout, user}) {
                             <ListItemText primary={"Home"} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
-                    <ListItem className='hover:bg-primary hover:text-white' disablePadding sx={{ display: 'block' }}>
+                    <ListItem className='hover:bg-primary hover:text-white' onClick={() => navigate('/dashboard')} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
@@ -180,7 +183,7 @@ export default function MiniDrawer({handleLogout, user}) {
                             <ListItemText primary={"Dashboard"} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
-                    <ListItem className='hover:bg-primary hover:text-white' disablePadding sx={{ display: 'block' }}>
+                    {user.role === 'admin' && <ListItem className='hover:bg-primary hover:text-white' onClick={() => navigate('/create')} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
@@ -200,7 +203,7 @@ export default function MiniDrawer({handleLogout, user}) {
                             </ListItemIcon>
                             <ListItemText primary={"Product Creation"} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
-                    </ListItem>
+                    </ListItem>}
                     <ListItem className='hover:bg-primary hover:text-white' onClick={handleLogout} disablePadding sx={{ display: 'block' }}>
                         <ListItemButton
                             sx={{
