@@ -1,5 +1,5 @@
 import { Box, Button, CardMedia, Grid, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Appbar from "../components/Appbar";
 import { Link } from "react-router-dom";
 import { getUser } from "../features/getUser";
@@ -38,6 +38,11 @@ const Dashboard = () => {
         }
         setOpen(false);
     }
+
+    useEffect(() => {
+
+    }, [user]);
+
     const handleLogout = () => {
         localStorage.removeItem('user');
         setUser(null);

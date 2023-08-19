@@ -4,7 +4,6 @@ import axios from "axios";
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
     try{
         const response = await axios.get("https://ecommerce-product-managment-backend.onrender.com/products");
-        // console.log(response.data);
         return response.data;
     } catch (error) {
         throw new Error(error.response)
@@ -33,8 +32,8 @@ export const editProduct = createAsyncThunk('products/edit', async({id, updatedP
     try{
         await axios.put(`https://ecommerce-product-managment-backend.onrender.com/editproduct/${id}`, updatedProduct);
         console.log("id: ",id, "updatedProduct: ", updatedProduct);
-        window.location.reload();
-        return id; 
+        // window.location.reload();
+        return {id, updatedProduct}; 
     }catch(error) {
         throw new Error(error.response);
     }
@@ -89,9 +88,12 @@ const productSlice = createSlice( {
         }).addCase(editProduct.fulfilled, (state, action) => {
             state.loading = false;
             state.error = null;
-            state.list = state.list.map((element) =>
-                    element.id === action.payload.id ? action.payload : element
+            const { id, updatedProduct } = action.payload || {}; // Destructure id and updatedProduct or default to an empty object
+            if (id && updatedProduct) {
+                state.list = state.list.map((element) =>
+                    element.id === id ? { ...element, ...updatedProduct } : element
                 );
+            }
         }).addCase(editProduct.rejected, (state, action) => {
             state.loading = null;
             state.error = action.error.message;

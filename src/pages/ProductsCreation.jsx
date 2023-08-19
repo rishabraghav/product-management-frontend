@@ -157,11 +157,11 @@ const ProductsCreation = () => {
                             <div className="flex flex-wrap-reverse w-full">
                                 {products.map(Element => (
 
-                                    <div key={Element.id} className="p-5 rounded w-fit">
+                                    <div key={Element.id} className="p-5 rounded w-fit space-y-6">
 
 
-                                        <Grid item className="flex space-x-5 justify-between items-start h-36 w-72 hover:opacity-95 cursor-pointer">
-                                            <div className="flex space-x-3">
+                                        <Grid item className="flex flex-wrap space-x-1 justify-between items-start h-36 w-72 hover:opacity-95 cursor-pointer">
+                                            <div className="flex space-x-1">
                                                 <Card className="flex">
                                                     <CardMedia className="h-28 w-28" image={Element.image ? Element.image : "https://source.unsplash.com/random"} />
                                                 </Card>
@@ -196,7 +196,7 @@ const ProductsCreation = () => {
 
                         {open &&
                             <Grid className="fixed justify-center items-center h-screen w-screen top-0 left-0 bg-opacity-20 bg-black" container>
-                                <div className="flex flex-col relative w-1/2">
+                                <div className="flex flex-col relative w-2/3">
                                     <span onClick={() => setOpen(false)} className="absolute m-2 right-0 bg-red-500 rounded-full h-4 w-4 cursor-pointer hover:scale-105"></span>
                                     <Grid item className="border bg-white rounded-md p-4">
                                         <form onSubmit={handleSubmit} className=" flex flex-col p-4 space-y-2">
@@ -211,7 +211,7 @@ const ProductsCreation = () => {
                                 </div>
                             </Grid>}
                         {openEdit && <Grid className="fixed justify-center items-center h-screen w-screen top-0 left-0 bg-opacity-20 bg-black" container>
-                            <div className="flex flex-col relative w-1/2">
+                            <div className="flex flex-col relative w-2/3">
                                 <span onClick={() => setOpenEdit(false)} className="absolute m-2 right-0 bg-red-500 rounded-full h-4 w-4 cursor-pointer hover:scale-105"></span>
                                 <Grid item className="border bg-white rounded-md p-4">
                                     <form onSubmit={handleUpdate} className=" flex flex-col p-4 space-y-2">
