@@ -120,10 +120,10 @@ const ProductsCreation = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex" }}>
+                <Box sx={{ display: "flex", width: "98%" }}>
                     <Appbar handleLogout={handleLogout} user={user} />
-                    <div className="mt-32 flex flex-col p-4 h-screen w-full items-center" >
-                        <div className="w-full flex justify-end space-x-4">
+                    <div className="mt-32 flex flex-col pl-7 h-screen w-full items-center" >
+                        <div className="w-full flex justify-end space-x-4 mb-5 place-self-start">
                             <Button variant="contained"
                                 sx={{
                                     backgroundColor: "#4E4FEB",
@@ -154,7 +154,7 @@ const ProductsCreation = () => {
 
 
                         <Grid container spacing={4}>
-                            <div className="flex flex-wrap-reverse w-full p-5">
+                            <div className="flex flex-wrap-reverse w-full">
                                 {products.map(Element => (
 
                                     <div key={Element.id} className="p-5 rounded w-fit">

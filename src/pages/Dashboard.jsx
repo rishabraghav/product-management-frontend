@@ -45,9 +45,9 @@ const Dashboard = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex" }}>
+                <Box sx={{ display: "flex", height: "1000px" }}>
                     <Appbar handleLogout={handleLogout} user={user} />
-                    <div className="mt-20 flex flex-col p-4 h-screen w-full justify-start items-center">
+                    <div className="mt-20 flex flex-col p-4 h-full w-full justify-start items-center">
                         <div className="flex w-3/4">
                             <Grid container spacing={4}>
                                 <Grid item className="space-y-2 h-fit">

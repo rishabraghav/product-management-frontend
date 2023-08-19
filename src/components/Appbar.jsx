@@ -21,7 +21,7 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
 import { useNavigate } from 'react-router-dom';
-import { CardMedia } from '@mui/material';
+import { CardMedia, useMediaQuery } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -90,7 +90,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-export default function MiniDrawer({handleLogout, user}) {
+export default function MiniDrawer({ handleLogout, user }) {
     const navigate = useNavigate();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -102,7 +102,7 @@ export default function MiniDrawer({handleLogout, user}) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -121,17 +121,16 @@ export default function MiniDrawer({handleLogout, user}) {
                         <MenuIcon />
                     </IconButton>
                     <div className='flex justify-between w-full'>
-                    <Typography variant="h6" noWrap component="div">
-                        Amberpass
-                    </Typography>
-                    <Typography className='flex items-center' variant='h6'>
-                        Welcome, {user.name}
-                        <CardMedia className="h-10 w-10 mx-4 rounded-full" image={user.image ? user.image : "https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg"}/>
-                    </Typography>
-                   
+                        <Typography variant={isSmallScreen ? "body1" : "h6"} className={isSmallScreen && "hidden"} noWrap component="div">
+                            Amberpass
+                        </Typography>
+                        <Typography className={isSmallScreen? 'flex items-center w-full justify-between' :'flex items-center justify-between'} variant={isSmallScreen ? "body2" : "h6"}>
+                            Welcome, {user.name}
+                            <CardMedia className={isSmallScreen ? "h-10 w-10 mx-1 rounded-full" : "h-10 w-10 mx-4 rounded-full"} image={user.image ? user.image : "https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg"} />
+                        </Typography>
                     </div>
                 </Toolbar>
-                
+
             </AppBar>
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
