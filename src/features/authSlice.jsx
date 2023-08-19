@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const loginAsync = createAsyncThunk("auth/login", async (userData) => {
     try {
-        const response = await axios.post('http://localhost:3001/login', userData);
+        const response = await axios.post('https://ecommerce-product-managment-backend.onrender.com/login', userData);
         localStorage.setItem('user', JSON.stringify(response.data.user))
         return response.data;
     } catch (error) {
@@ -17,7 +17,7 @@ export const loginAsync = createAsyncThunk("auth/login", async (userData) => {
 
 export const registerAsync = createAsyncThunk("auth/register", async (userData) => {
     try {
-        const response = await axios.post("http://localhost:3001/register", userData);
+        const response = await axios.post("https://ecommerce-product-managment-backend.onrender.com/register", userData);
         localStorage.setItem('user', JSON.stringify(response.data.user))
         return response.data;
     } catch(error) {
@@ -31,7 +31,7 @@ export const registerAsync = createAsyncThunk("auth/register", async (userData) 
 
 export const editUser = createAsyncThunk('auth/edit', async (userData) => {
     try {
-        const response = await axios.put(`http://localhost:3001/edituser/${userData.id}`, userData.updatedUser);
+        const response = await axios.put(`https://ecommerce-product-managment-backend.onrender.com/edituser/${userData.id}`, userData.updatedUser);
         localStorage.setItem('user', JSON.stringify(response.data.user))
         window.location.reload();
         return response.data;

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
     try{
-        const response = await axios.get("http://localhost:3001/products");
+        const response = await axios.get("https://ecommerce-product-managment-backend.onrender.com/products");
         // console.log(response.data);
         return response.data;
     } catch (error) {
@@ -13,7 +13,7 @@ export const fetchProducts = createAsyncThunk("products/fetch", async () => {
 
 export const createProduct = createAsyncThunk("products/create", async(newProduct) => {
     try{
-        const response = await axios.post("http://localhost:3001/insertproducts", newProduct);
+        const response = await axios.post("https://ecommerce-product-managment-backend.onrender.com/insertproducts", newProduct);
         console.log(response.data);
         return response.data;
     } catch (error) {
@@ -23,7 +23,7 @@ export const createProduct = createAsyncThunk("products/create", async(newProduc
 
 export const deleteProduct = createAsyncThunk('products/delete', async(id) => {
     try{
-        await axios.delete(`http://localhost:3001/deleteproduct/${id}`);
+        await axios.delete(`https://ecommerce-product-managment-backend.onrender.com/deleteproduct/${id}`);
         return id; 
     }catch(error) {
         throw new Error(error.response);
@@ -31,7 +31,7 @@ export const deleteProduct = createAsyncThunk('products/delete', async(id) => {
 });
 export const editProduct = createAsyncThunk('products/edit', async({id, updatedProduct}) => {
     try{
-        await axios.put(`http://localhost:3001/editproduct/${id}`, updatedProduct);
+        await axios.put(`https://ecommerce-product-managment-backend.onrender.com/editproduct/${id}`, updatedProduct);
         console.log("id: ",id, "updatedProduct: ", updatedProduct);
         return id; 
     }catch(error) {
