@@ -33,6 +33,7 @@ export const editProduct = createAsyncThunk('products/edit', async({id, updatedP
     try{
         await axios.put(`https://ecommerce-product-managment-backend.onrender.com/editproduct/${id}`, updatedProduct);
         console.log("id: ",id, "updatedProduct: ", updatedProduct);
+        window.location.reload();
         return id; 
     }catch(error) {
         throw new Error(error.response);

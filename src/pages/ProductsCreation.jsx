@@ -200,8 +200,8 @@ const ProductsCreation = () => {
                                     <span onClick={() => setOpen(false)} className="absolute m-2 right-0 bg-red-500 rounded-full h-4 w-4 cursor-pointer hover:scale-105"></span>
                                     <Grid item className="border bg-white rounded-md p-4">
                                         <form onSubmit={handleSubmit} className=" flex flex-col p-4 space-y-2">
-                                            <TextField value={name} required onChange={(e => setName(e.target.value))} id="outlined-basic" label="Name" variant="outlined" />
-                                            <TextField value={description} onChange={(e => setDescription(e.target.value))} id="outlined-basic" label="Description" variant="outlined" multiline rows={3} />
+                                            <TextField value={name} required onChange={(e => setName(e.target.value))} id="outlined-basic" label="Name" variant="outlined" inputProps={{ maxLength: 20 }}/>
+                                            <TextField value={description} onChange={(e => setDescription(e.target.value))} id="outlined-basic" label="Description" variant="outlined" multiline rows={3} inputProps={{ maxLength: 50 }}/>
                                             <TextField value={imageUrl} onChange={(e => setImageUrl(e.target.value))} id="outlined-basic" label="Image URL" variant="outlined" />
                                             <TextField value={price} required type="number" onChange={(e => setPrice(e.target.value))} id="outlined-basic" label="Price" variant="outlined" />
                                             <TextField value={quantity} required type="number" onChange={(e => setQuantity(e.target.value))} id="outlined-basic" label="Quantity" variant="outlined" />
@@ -215,8 +215,8 @@ const ProductsCreation = () => {
                                 <span onClick={() => setOpenEdit(false)} className="absolute m-2 right-0 bg-red-500 rounded-full h-4 w-4 cursor-pointer hover:scale-105"></span>
                                 <Grid item className="border bg-white rounded-md p-4">
                                     <form onSubmit={handleUpdate} className=" flex flex-col p-4 space-y-2">
-                                        <TextField value={name} required onChange={(e => setName(e.target.value))} id="outlined-basic" label="Name" variant="outlined" />
-                                        <TextField value={description} onChange={(e => setDescription(e.target.value))} id="outlined-basic" label="Description" variant="outlined" multiline rows={3} />
+                                        <TextField value={name} required onChange={(e => setName(e.target.value))} id="outlined-basic" label="Name" variant="outlined" inputProps={{ maxLength: 20 }} />
+                                        <TextField value={description} onChange={(e => setDescription(e.target.value))} id="outlined-basic" label="Description" variant="outlined" multiline rows={3} inputProps={{ maxLength: 50 }}/>
                                         <TextField value={imageUrl} onChange={(e => setImageUrl(e.target.value))} id="outlined-basic" label="Image URL" variant="outlined" />
                                         <TextField value={price} required type="number" onChange={(e => setPrice(e.target.value))} id="outlined-basic" label="Price" variant="outlined" />
                                         <TextField value={quantity} required type="number" onChange={(e => setQuantity(e.target.value))} id="outlined-basic" label="Quantity" variant="outlined" />
