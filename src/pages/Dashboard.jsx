@@ -50,7 +50,7 @@ const Dashboard = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", height: "1000px" }}>
+                <Box sx={{ display: "flex", height: "1000px", position: "fixed", width: "100%", overflow: "scroll" }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-20 flex flex-col p-4 h-full w-full justify-start items-center">
                         <div className="flex w-3/4">
@@ -70,16 +70,16 @@ const Dashboard = () => {
                                 <Grid item className="h-64 w-96">
                                     <div className="h-full w-full justify-center items-center flex flex-col">
                                         <div className="h-fit w-full justify-center items-start flex flex-col space-y-6">
-                                            <TextField className="w-full" id="outlined-multiline-static" label="Name" defaultValue={user.name} />
-                                            <TextField className="w-full" id="outlined-multiline-static" label="Email" defaultValue={user.email} />
+                                            <TextField className="w-full" id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Name" defaultValue={user.name} />
+                                            <TextField className="w-full" id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Email" defaultValue={user.email} />
                                         </div>
                                     </div>
                                 </Grid>
                             </Grid>
                         </div>
                         {user.role === 'admin' &&
-                            <Grid container className="h-full w-full">
-                                <div className="flex w-full justify-center">
+                            <Grid container className="h-full w-full ">
+                                <div className="flex w-full justify-center overflow-scroll">
                                     <Grid item className="w-3/4">
                                         <AgDataGrid />
                                     </Grid>
@@ -87,7 +87,7 @@ const Dashboard = () => {
 
                             </Grid>}
                         {open &&
-                            <Grid className="fixed justify-center items-center h-screen w-screen top-0 left-0 bg-opacity-20 bg-black" container>
+                            <Grid className="fixed justify-center items-center h-screen w-screen top-0 left-0 bg-opacity-30 bg-black" container>
                                 <div className="flex flex-col relative w-1/2">
                                     <span onClick={() => setOpen(false)} className="absolute m-2 right-0 bg-red-500 rounded-full h-4 w-4 cursor-pointer hover:scale-105"></span>
                                     <Grid item className="border bg-white rounded-md p-4">

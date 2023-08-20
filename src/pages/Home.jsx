@@ -25,7 +25,7 @@ const Home = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex" }}>
+                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll"  }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-32 flex p-4 h-full w-full">
                     <Grid className="py-7 px-5 h-full w-full" container spacing={6} >
