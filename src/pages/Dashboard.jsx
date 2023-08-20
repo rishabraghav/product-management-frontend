@@ -55,8 +55,9 @@ const Dashboard = () => {
             {user ? (
                 <Box sx={{ display: "flex", height: "100vh", position: "fixed", width: "100%", overflow: "scroll",...(isSmallScreen && {
                         overflow: "scroll",
-                        height: "90vh",
-                        paddingBottom: "0px"
+                        height: "80vh",
+                        paddingBottom: "0px",
+                        scrollPaddingRight: "100vw",
                     }), }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-20 flex flex-col p-4 h-full w-full justify-start items-center">
@@ -64,7 +65,7 @@ const Dashboard = () => {
                             <Grid container spacing={4}>
                                 <Grid item className="space-y-2 h-fit">
 
-                                    <CardMedia className="h-64 w-64 rounded-full" image={user.image ? user.image : "https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg"} />
+                                    <CardMedia className={isSmallScreen? "h-48 w-48 rounded-full":"h-64 w-64 rounded-full"} image={user.image ? user.image : "https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg"} />
                                     <Button variant="contained" sx={{
                                         backgroundColor: "#4E4FEB",
                                         '&:hover': {
@@ -77,17 +78,17 @@ const Dashboard = () => {
                                 <Grid item className="h-64 w-96">
                                     <div className="h-full w-full justify-center items-center flex flex-col">
                                         <div className="h-fit w-full justify-center items-start flex flex-col space-y-6">
-                                            <TextField className="w-full" id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Name" defaultValue={user.name} />
-                                            <TextField className="w-full" id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Email" defaultValue={user.email} />
+                                            <TextField className="w-full" size={isSmallScreen && "small"} id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Name" defaultValue={user.name} />
+                                            <TextField className="w-full" size={isSmallScreen && "small"} id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Email" defaultValue={user.email} />
                                         </div>
                                     </div>
                                 </Grid>
                             </Grid>
                         </div>
                         {user.role === 'admin' &&
-                            <Grid container className="h-full w-full">
+                            <Grid container className="h-full w-fit">
                                 <div className="flex w-full justify-center overflow-scroll">
-                                    <Grid item className="w-3/4">
+                                    <Grid item className="w-4/5">
                                         <AgDataGrid />
                                     </Grid>
                                 </div>
