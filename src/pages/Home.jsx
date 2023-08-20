@@ -88,7 +88,7 @@ const Home = () => {
                 </Grid>
               ))}
             </Grid>
-            <div className={isSmallScreen? "flex fixed bottom-24 w-full items-center justify-start mt-4" :"flex fixed bottom-1 w-full items-center justify-center mt-4"}>
+            <div className="flex fixed bottom-1 w-full items-center justify-center mt-4">
               <button
                 onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
