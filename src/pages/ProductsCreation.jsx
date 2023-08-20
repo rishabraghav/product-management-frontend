@@ -1,13 +1,13 @@
 import Appbar from "../components/Appbar";
 import React, { useEffect, useState } from "react";
 import { getUser } from "../features/getUser";
-// import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, createProduct, deleteProduct, editProduct } from "../features/productsSlice";
-import { Box, Card, CardContent, CardMedia, Grid, Typography, Button, TextField } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Grid, Typography, Button, TextField, useMediaQuery } from "@mui/material";
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import { useTheme } from '@mui/material/styles';
 
 
 const ProductsCreation = () => {
@@ -116,11 +116,16 @@ const ProductsCreation = () => {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     }
-
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll" }}>
+                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll",...(isSmallScreen && {
+                        overflow: "scroll",
+                        height: "90vh",
+                        paddingBottom: "0px"
+                    }), }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-32 flex flex-col pl-7 h-screen w-full items-center" >
                         <div className="w-full flex justify-end space-x-4 mb-5 mr-7">

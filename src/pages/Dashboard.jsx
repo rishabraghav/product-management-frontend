@@ -6,7 +6,8 @@ import { getUser } from "../features/getUser";
 import AgDataGrid from "../components/AgDataGrid";
 import { useDispatch } from "react-redux";
 import { editUser } from "../features/authSlice";
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 
 const Dashboard = () => {
@@ -47,10 +48,16 @@ const Dashboard = () => {
         localStorage.removeItem('user');
         setUser(null);
     }
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", height: "100vh", position: "fixed", width: "100%", overflow: "scroll" }}>
+                <Box sx={{ display: "flex", height: "100vh", position: "fixed", width: "100%", overflow: "scroll",...(isSmallScreen && {
+                        overflow: "scroll",
+                        height: "90vh",
+                        paddingBottom: "0px"
+                    }), }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-20 flex flex-col p-4 h-full w-full justify-start items-center">
                         <div className="flex w-3/4">
@@ -78,7 +85,7 @@ const Dashboard = () => {
                             </Grid>
                         </div>
                         {user.role === 'admin' &&
-                            <Grid container className="h-full w-full ">
+                            <Grid container className="h-full w-full">
                                 <div className="flex w-full justify-center overflow-scroll">
                                     <Grid item className="w-3/4">
                                         <AgDataGrid />

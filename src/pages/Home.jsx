@@ -5,7 +5,8 @@ import { getUser } from "../features/getUser";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../features/productsSlice";
-import { Box, Card, CardContent, Button, CardMedia, Grid, Typography } from "@mui/material";
+import { Box, Card, CardContent, Button, CardMedia, Grid, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
 
 const Home = () => {
     const [user, setUser] = useState(getUser());
@@ -21,14 +22,19 @@ const Home = () => {
         localStorage.removeItem('user');
         setUser(null);
     }
-
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll", height: "100vh"  }}>
+                <Box sx={{display: "flex", position: "fixed",  overflow: "scroll", height: "100vh", ...(isSmallScreen && {
+                        overflow: "scroll",
+                        height: "90vh",
+                        paddingBottom: "0px"
+                    }), }}>
                     <Appbar handleLogout={handleLogout} user={user} />
-                    <div className="mt-32 flex p-4 h-full w-full">
-                    <Grid className="py-7 px-5 h-fit w-full" container spacing={6} >
+                    <div className="mt-32 flex pl-1 ml-1 mb-4 pb-4 h-full w-full">
+                    <Grid className="flex py-7 pl-1 pb-4 mb-4 h-fit w-full" container spacing={6} >
                             {products.map(Element => (
                                 <Grid item key={Element.id} className="h-full w-80 relative hover:opacity-75 cursor-pointer">
                                 <Card className="flex">
