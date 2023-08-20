@@ -50,7 +50,7 @@ const Dashboard = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", height: "1000px", position: "fixed", width: "100%", overflow: "scroll" }}>
+                <Box sx={{ display: "flex", height: "100vh", position: "fixed", width: "100%", overflow: "scroll" }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-20 flex flex-col p-4 h-full w-full justify-start items-center">
                         <div className="flex w-3/4">

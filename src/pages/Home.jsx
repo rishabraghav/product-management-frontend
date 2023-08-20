@@ -25,10 +25,10 @@ const Home = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll"  }}>
+                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll", height: "100vh"  }}>
                     <Appbar handleLogout={handleLogout} user={user} />
                     <div className="mt-32 flex p-4 h-full w-full">
-                    <Grid className="py-7 px-5 h-full w-full" container spacing={6} >
+                    <Grid className="py-7 px-5 h-fit w-full" container spacing={6} >
                             {products.map(Element => (
                                 <Grid item key={Element.id} className="h-full w-80 relative hover:opacity-75 cursor-pointer">
                                 <Card className="flex">
