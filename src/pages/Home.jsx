@@ -56,7 +56,7 @@ const Home = () => {
           }}
         >
           <Appbar handleLogout={handleLogout} user={user} />
-          <div className="mt-32 flex flex-col pl-1 ml-1 mb-4 pb-4 h-fit w-full">
+          <div className="mt-32 flex flex-col justify-between pl-1 ml-1 mb-4 pb-4 h-fit w-full">
             <Grid
               className="flex py-7 pl-1 pb-4 mb-4 h-fit w-full"
               container
@@ -88,7 +88,7 @@ const Home = () => {
                 </Grid>
               ))}
             </Grid>
-            <div className="flex fixed bottom-1 w-full items-center justify-center mt-4">
+            <div className={isSmallScreen? "flex bottom-1 w-full items-center justify-start mt-4":"flex bottom-1 w-full items-center justify-center mt-4"}>
               <button
                 onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
