@@ -55,7 +55,7 @@ const Dashboard = () => {
             {user ? (
                 <Box sx={{ display: "flex", height: "100vh", position: "fixed", width: "100%", overflow: "scroll",...(isSmallScreen && {
                         overflow: "scroll",
-                        height: "80vh",
+                        height: "90vh",
                         paddingBottom: "0px",
                         scrollPaddingRight: "100vw",
                     }), }}>
