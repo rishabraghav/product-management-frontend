@@ -121,7 +121,7 @@ const ProductsCreation = () => {
     return (
         <>
             {user ? (
-                <Box sx={{ display: "flex", position: "fixed",  overflow: "scroll",...(isSmallScreen && {
+                <Box sx={{ display: "flex", position: "fixed", height: "100vh",  overflow: "scroll",...(isSmallScreen && {
                         overflow: "scroll",
                         height: "90vh",
                         paddingBottom: "0px"
