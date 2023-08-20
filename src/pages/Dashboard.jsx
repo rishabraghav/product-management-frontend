@@ -75,8 +75,8 @@ const Dashboard = () => {
                                         onClick={() => setOpen(true)}
                                     >Edit profile</Button>
                                 </Grid>
-                                <Grid item className="h-64 w-96">
-                                    <div className="h-full w-full justify-center items-center flex flex-col">
+                                <Grid item className="h-fit pb-5 w-96">
+                                    <div className="h-fit w-full justify-center items-center flex flex-col">
                                         <div className="h-fit w-full justify-center items-start flex flex-col space-y-6">
                                             <TextField className="w-full" size={isSmallScreen && "small"} id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Name" defaultValue={user.name} />
                                             <TextField className="w-full" size={isSmallScreen && "small"} id="outlined-multiline-static" InputProps={{readOnly: true,}} label="Email" defaultValue={user.email} />
